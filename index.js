@@ -8,6 +8,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const PORT = 8089;
+
 var homeRouter = require('./routes/home');
 
 var app = express();
@@ -41,6 +43,6 @@ app.use(function(err, req, res, next) {
 
 var server = http.createServer(app);
 
-server.listen(8089, function() {
-  console.log("Node server is running...");
+server.listen(PORT, function() {
+  console.log(`Node server is running on port ${PORT}`);
 });
