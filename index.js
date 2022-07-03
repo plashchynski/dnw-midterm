@@ -11,6 +11,7 @@ const PORT = 8089;
 
 const homeRouter = require('./routes/home');
 const aboutRouter = require('./routes/about');
+const devicesRouter = require('./routes/devices');
 
 const app = express();
 
@@ -29,7 +30,7 @@ app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstr
 
 app.use('/', homeRouter);
 app.use('/about', aboutRouter);
-
+app.use('/devices', devicesRouter);
 
 // catch 404 and forward to error handler
 app.use((_req, _res, next) => {
