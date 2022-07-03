@@ -23,6 +23,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Add bootstrap dist files as a virtual subdirectory for static files
+app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist')));
+
 app.use('/', homeRouter);
 
 // catch 404 and forward to error handler
