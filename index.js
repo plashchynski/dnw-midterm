@@ -10,6 +10,7 @@ const logger = require('morgan');
 const PORT = 8089;
 
 const homeRouter = require('./routes/home');
+const aboutRouter = require('./routes/about');
 
 const app = express();
 
@@ -27,6 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist')));
 
 app.use('/', homeRouter);
+app.use('/about', aboutRouter);
+
 
 // catch 404 and forward to error handler
 app.use((_req, _res, next) => {
