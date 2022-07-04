@@ -13,15 +13,15 @@
 
       <h1 class="mb-4">Add a new device</h1>
 
-      <form>
+      <form action="/devices" method="post">
         <div class="mb-3">
           <label for="deviceNameInputField" class="form-label">Name</label>
-          <input type="text" id="deviceNameInputField" class="form-control" required>
+          <input type="text" name="name" id="deviceNameInputField" class="form-control" required>
         </div>
 
         <div class="mb-3">
           <label for="deviceTypeSelector" class="form-label">Type</label>
-          <select id="deviceTypeSelector" class="form-select">
+          <select name="type" id="deviceTypeSelector" class="form-select">
             <option disabled selected value>Select a type</option>
             <option value="ac">Air Conditioning</option>
             <option value="heater">Heater</option>
@@ -38,7 +38,7 @@
 
         <div class="mb-3">
           <label for="deviceDescriptionInputField" class="form-label">Description</label>
-          <textarea rows="3" id="deviceDescriptionInputField" class="form-control"></textarea>
+          <textarea rows="3" name="description" id="deviceDescriptionInputField" class="form-control"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Create</button>
