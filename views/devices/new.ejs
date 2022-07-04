@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <title>Gader - Smart home manager</title>
+  </head>
+  <body>
+    <div class="container">
+      <%- include('../_navbar.ejs') %>
+
+      <h1 class="mb-4">Add a new device</h1>
+
+      <form>
+        <div class="mb-3">
+          <label for="deviceNameInputField" class="form-label">Name</label>
+          <input type="text" id="deviceNameInputField" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="deviceTypeSelector" class="form-label">Type</label>
+          <select id="deviceTypeSelector" class="form-select">
+            <option disabled selected value>Select a type</option>
+            <option value="ac">Air Conditioning</option>
+            <option value="heater">Heater</option>
+            <option value="curtain">Curtain</option>
+            <option value="lighting">Lighting</option>
+            <option value="tv">TV</option>
+            <option value="camera">Security Сamera</option>
+            <option value="door_chime">Door Chime</option>
+            <option value="thermometer_sensor">Thermometer</option>
+            <option value="motion_sensor">Motion Sensor</option>
+            <option value="door_open_sensor">Door Open Sensor</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="deviceDescriptionInputField" class="form-label">Description</label>
+          <textarea rows="3" id="deviceDescriptionInputField" class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+
+    <script language="javascript" src="/bootstrap/js/bootstrap.bundle.js"></script>
+  </body>
+</html>
