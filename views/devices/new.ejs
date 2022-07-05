@@ -43,6 +43,29 @@
               <textarea rows="3" name="description" id="deviceDescriptionInputField" class="form-control"></textarea>
             </div>
 
+            <div class="mb-3">
+              <label for="deviceStatusSelector" class="form-label">Type</label>
+              <select name="status" id="deviceStatusSelector" class="form-select" required>
+                <option disabled selected value>Select status</option>
+                <option value="on">On</option>
+                <option value="off">Off</option>
+                <option value="alert">Alert</option>
+                <option value="opened">Opened</option>
+                <option value="closed">Closed</option>
+                <option value="error">Error</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="deviceTemperatureSensorValueInputField" class="form-label">Temperature Sensor Value</label>
+              <input type="number" name="temperature_sensor_value" id="deviceTemperatureSensorValueInputField" class="form-control"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="deviceTemperatureTargetValueInputField" class="form-label">Temperature Target Value</label>
+              <input type="number" name="temperature_target_value" id="deviceTemperatureTargetValueInputField" class="form-control"></textarea>
+            </div>
+
             <button type="submit" class="btn btn-primary">Create</button>
           </form>
         </div>

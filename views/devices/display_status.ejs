@@ -5,14 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
-    <title>Gader - Smart home manager</title>
+    <title>Gader - Smart home manager — <%= device.name %> status</title>
   </head>
   <body>
     <div class="container">
       <%- include('../_navbar.ejs') %>
+
       <div class="row">
         <div class="col col-xl-6">
-          <%= device.name %>
+          <h1>Device Status</h1>
+          
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>id</th>
+                <td><%= device.id %></td>
+              </tr>
+
+              <tr>
+                <th>name</th>
+                <td><%= device.name %></td>
+              </tr>
+
+              <tr>
+                <th>status</th>
+                <td><%= device.status %></td>
+              </tr>
+
+              <tr>
+                <th>description</th>
+                <td><%= device.description %></td>
+              </tr>
+
+              <tr>
+                <th>temperature sensor value</th>
+                <td><%= device.temperature_sensor_value %></td>
+              </tr>
+
+              <tr>
+                <th>temperature target value</th>
+                <td><%= device.temperature_target_value %></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

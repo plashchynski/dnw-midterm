@@ -19,11 +19,24 @@ router.get('/new', (req, res, next) => {
 
 // Create a new device
 router.post('/', async (req, res, next) => {
-  const { description, type, name } = req.body;
-  const status = 'off';
-  const fields = [name, type, description, status];
+  const {
+    description, type, name, status, temperature_sensor_value, temperature_target_value
+  } = req.body;
 
-  await db.query('INSERT INTO devices (name, type, description, status) VALUES (?, ?, ?, ?)', fields);
+  const values = [name, type, description, status, temperature_sensor_value,
+    temperature_target_value];
+
+  const sql = `
+  INSERT INTO devices (
+    name,
+    type,
+    description,
+    status,
+    temperature_sensor_value,
+    temperature_target_value
+  ) VALUES (?, ?, ?, ?, ?, ?)`;
+
+  await db.query(sql, values);
 
   res.redirect('/devices/new');
 });
