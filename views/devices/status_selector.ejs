@@ -10,6 +10,18 @@
   <body>
     <div class="container">
       <%- include('../_navbar.ejs') %>
+
+      <div class="row">
+        <div class="col">
+          <h1>Device Status</h1>
+          <h2>Select a device to display status:</h2>
+          <div class="list-group">
+            <% devices.forEach(function(device){ %>
+              <a class="list-group-item list-group-item-action" href="/devices/status/<%= device.id %>"><%= device.name %></a>
+            <% }); %>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script language="javascript" src="/bootstrap/js/bootstrap.bundle.js"></script>

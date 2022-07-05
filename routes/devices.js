@@ -1,12 +1,62 @@
 const express = require('express');
 const mysql = require('mysql');
 
-
-
 const router = express.Router();
 
 router.get('/status', (req, res, next) => {
-  res.render('devices/status');
+  const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'gader',
+    password: '12345678',
+    database: 'gader_dev',
+  });
+
+  connection.connect((err) => {
+    if (err) {
+      res.status(500).send(`Database error: ${err}`);
+      return;
+    }
+
+    const sql = 'SELECT * FROM devices;';
+
+    connection.query(sql, (err, rows, fields) => {
+      if (err) {
+        res.status(500).send(`Database error: ${err}`);
+        return;
+      }
+
+      console.log(rows);
+
+      res.render('devices/status_selector', { devices: rows });
+    });
+  });
+});
+
+router.get('/status/:deviceId', (req, res, next) => {
+  const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'gader',
+    password: '12345678',
+    database: 'gader_dev',
+  });
+
+  connection.connect((err) => {
+    if (err) {
+      res.status(500).send(`Database error: ${err}`);
+      return;
+    }
+
+    const sql = 'SELECT * FROM devices WHERE id = ?;';
+
+    connection.query(sql, [req.params.deviceId], (err, rows, fields) => {
+      if (err) {
+        res.status(500).send(`Database error: ${err}`);
+        return;
+      }
+
+      res.render('devices/display_status', { device: rows[0] });
+    });
+  });
 });
 
 router.get('/new', (req, res, next) => {
