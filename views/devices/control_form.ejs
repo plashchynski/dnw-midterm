@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <title>Gader - Smart home manager</title>
+  </head>
+  <body>
+    <div class="container">
+      <%- include('../_navbar.ejs') %>
+
+      <div class="row">
+        <div class="col col-xl-6">
+          <h1 class="mb-4">Control device</h1>
+
+          <form action="/devices/control/<%= device.id %>" method="post">
+            <div class="mb-3">
+              <label for="deviceNameInputField" class="form-label">Name</label>
+              <input type="text" name="name" value="<%= device.name %>" id="deviceNameInputField" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="deviceTypeSelector" class="form-label">Type</label>
+              <select name="type" id="deviceTypeSelector" class="form-select" required>
+                <option disabled selected value>Select a type</option>
+                <option <%= (device.type == 'ac') ? 'selected' : '' %> value="ac">Air Conditioning</option>
+                <option <%= (device.type == 'heater') ? 'selected' : '' %> value="heater">Heater</option>
+                <option <%= (device.type == 'curtain') ? 'selected' : '' %> value="curtain">Curtain</option>
+                <option <%= (device.type == 'lighting') ? 'selected' : '' %> value="lighting">Lighting</option>
+                <option <%= (device.type == 'tv') ? 'selected' : '' %> value="tv">TV</option>
+                <option <%= (device.type == 'camera') ? 'selected' : '' %> value="camera">Security Сamera</option>
+                <option <%= (device.type == 'door_chime') ? 'selected' : '' %> value="door_chime">Door Chime</option>
+                <option <%= (device.type == 'thermometer_sensor') ? 'selected' : '' %> value="thermometer_sensor">Thermometer</option>
+                <option <%= (device.type == 'motion_sensor') ? 'selected' : '' %> value="motion_sensor">Motion Sensor</option>
+                <option <%= (device.type == 'door_open_sensor') ? 'selected' : '' %> value="door_open_sensor">Door Open Sensor</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="deviceDescriptionInputField" class="form-label">Description</label>
+              <textarea rows="3" name="description" value="<%= device.description %>" id="deviceDescriptionInputField" class="form-control"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="deviceStatusSelector" class="form-label">Type</label>
+              <select name="status" id="deviceStatusSelector" class="form-select" required>
+                <option disabled value>Select status</option>
+                <option <%= (device.status == 'on') ? 'selected' : '' %> value="on">On</option>
+                <option <%= (device.status == 'off') ? 'selected' : '' %> value="off">Off</option>
+                <option <%= (device.status == 'alert') ? 'selected' : '' %> value="alert">Alert</option>
+                <option <%= (device.status == 'opened') ? 'selected' : '' %> value="opened">Opened</option>
+                <option <%= (device.status == 'closed') ? 'selected' : '' %> value="closed">Closed</option>
+                <option <%= (device.status == 'error') ? 'selected' : '' %> value="error">Error</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="deviceTemperatureSensorValueInputField" class="form-label">Temperature Sensor Value</label>
+              <input type="number" value="<%= device.temperature_sensor_value %>" name="temperature_sensor_value" id="deviceTemperatureSensorValueInputField" class="form-control"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="deviceTemperatureTargetValueInputField" class="form-label">Temperature Target Value</label>
+              <input type="number" value="<%= device.temperature_target_value %>" name="temperature_target_value" id="deviceTemperatureTargetValueInputField" class="form-control"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script language="javascript" src="/bootstrap/js/bootstrap.bundle.js"></script>
+  </body>
+</html>

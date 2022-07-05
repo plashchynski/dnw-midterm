@@ -41,8 +41,38 @@ router.post('/', async (req, res, next) => {
   res.redirect('/devices/new');
 });
 
-router.get('/control', (req, res, next) => {
-  res.render('devices/control');
+router.get('/control', async (req, res, next) => {
+  const data = await db.query('SELECT * FROM devices;');
+  res.render('devices/control_selector', { devices: data });
+});
+
+router.get('/control/:deviceId', async (req, res, next) => {
+  const data = await db.query('SELECT * FROM devices WHERE id = ?;', [req.params.deviceId]);
+  res.render('devices/control_form', { device: data[0] });
+});
+
+// Update the device
+router.post('/control/:deviceId', async (req, res, next) => {
+  const {
+    description, type, name, status, temperature_sensor_value, temperature_target_value
+  } = req.body;
+
+  const values = [name, type, description, status, temperature_sensor_value,
+    temperature_target_value, req.params.deviceId];
+
+  const sql = `
+    UPDATE devices
+    SET name = ?,
+      type = ?,
+      description = ?,
+      status = ?,
+      temperature_sensor_value = ?,
+      temperature_target_value = ?
+    WHERE id = ?`;
+
+  await db.query(sql, values);
+
+  res.redirect(`/devices/status/${req.params.deviceId}`);
 });
 
 router.get('/delete', (req, res, next) => {
