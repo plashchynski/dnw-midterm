@@ -20,21 +20,25 @@ router.get('/new', (req, res, next) => {
 // Create a new device
 router.post('/', async (req, res, next) => {
   const {
-    description, type, name, status, temperature_sensor_value, temperature_target_value
+    description, status, type, name, temperatureSensorValue, temperatureTargetValue, volume,
   } = req.body;
 
-  const values = [name, type, description, status, temperature_sensor_value,
-    temperature_target_value];
+  const powerOn = (req.body.powerOn === '1') ? 1 : 0;
+
+  const values = [name, type, description, powerOn, status, temperatureSensorValue,
+    temperatureTargetValue, volume];
 
   const sql = `
   INSERT INTO devices (
     name,
     type,
     description,
+    powerOn,
     status,
-    temperature_sensor_value,
-    temperature_target_value
-  ) VALUES (?, ?, ?, ?, ?, ?)`;
+    temperatureSensorValue,
+    temperatureTargetValue,
+    volume
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
   await db.query(sql, values);
 
@@ -48,26 +52,31 @@ router.get('/control', async (req, res, next) => {
 
 router.get('/control/:deviceId', async (req, res, next) => {
   const data = await db.query('SELECT * FROM devices WHERE id = ?;', [req.params.deviceId]);
-  res.render('devices/control_form', { device: data[0] });
+  res.render('devices/control', { device: data[0] });
 });
 
 // Update the device
 router.post('/control/:deviceId', async (req, res, next) => {
   const {
-    description, type, name, status, temperature_sensor_value, temperature_target_value
+    description, type, name, status, temperatureSensorValue,
+    temperatureTargetValue, volume,
   } = req.body;
 
-  const values = [name, type, description, status, temperature_sensor_value,
-    temperature_target_value, req.params.deviceId];
+  const powerOn = (req.body.powerOn === '1') ? 1 : 0;
+
+  const values = [name, type, description, powerOn, status, temperatureSensorValue,
+    temperatureTargetValue, volume, req.params.deviceId];
 
   const sql = `
     UPDATE devices
     SET name = ?,
       type = ?,
       description = ?,
+      powerOn = ?,
       status = ?,
-      temperature_sensor_value = ?,
-      temperature_target_value = ?
+      temperatureSensorValue = ?,
+      temperatureTargetValue = ?,
+      volume = ?
     WHERE id = ?`;
 
   await db.query(sql, values);

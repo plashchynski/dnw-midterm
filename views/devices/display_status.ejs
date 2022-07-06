@@ -34,6 +34,11 @@
               </tr>
 
               <tr>
+                <th>Power on</th>
+                <td><%= device.powerOn %></td>
+              </tr>
+
+              <tr>
                 <th>status</th>
                 <td><%= device.status %></td>
               </tr>
@@ -45,12 +50,17 @@
 
               <tr>
                 <th>temperature sensor value</th>
-                <td><%= device.temperature_sensor_value %></td>
+                <td><%= device.temperatureSensorValue %></td>
               </tr>
 
               <tr>
                 <th>temperature target value</th>
-                <td><%= device.temperature_target_value %></td>
+                <td><%= device.temperatureTargetValue %></td>
+              </tr>
+
+              <tr>
+                <th>volume</th>
+                <td><%= device.volume %></td>
               </tr>
             </tbody>
           </table>

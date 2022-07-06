@@ -7,7 +7,6 @@ const config = {
     waitForConnections: true,
     connectionLimit: 2,
     queueLimit: 0,
-    debug: true,
   },
 };
 
