@@ -75,8 +75,14 @@ router.post('/control/:deviceId', async (req, res, next) => {
   res.redirect(`/devices/status/${req.params.deviceId}`);
 });
 
-router.get('/delete', (req, res, next) => {
-  res.render('devices/delete');
+router.get('/delete', async (req, res, next) => {
+  const data = await db.query('SELECT * FROM devices;');
+  res.render('devices/delete_selector', { devices: data });
+});
+
+router.post('/delete/:deviceId', async (req, res, next) => {
+  await db.query('DELETE FROM devices WHERE id = ?;', [req.params.deviceId]);
+  res.redirect('/devices/delete');
 });
 
 module.exports = router;

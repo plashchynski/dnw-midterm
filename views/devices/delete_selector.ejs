@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
+    <title>Gader - Smart home manager</title>
+  </head>
+  <body>
+    <div class="container">
+      <%- include('../_navbar.ejs') %>
+
+      <div class="row">
+        <div class="col">
+          <h1>Delete Device</h1>
+          <h2>Select a device to delete:</h2>
+          <div class="list-group">
+            <% devices.forEach(function(device){ %>
+              <form action="/devices/delete/<%= device.id %>" method="post">
+                <button type="submit" class="list-group-item list-group-item-action"><%= device.name %></button>
+              </form>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script language="javascript" src="/bootstrap/js/bootstrap.bundle.js"></script>
+  </body>
+</html>
