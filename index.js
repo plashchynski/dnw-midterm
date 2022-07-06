@@ -6,7 +6,8 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const expressLayouts = require('express-ejs-layouts');
 
 const PORT = 8089;
 
@@ -19,6 +20,10 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+// set layout
+app.use(expressLayouts);
+app.set('layout', 'layouts/layout');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));

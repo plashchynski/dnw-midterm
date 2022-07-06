@@ -1,74 +1,59 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
-    <title>Gader - Smart home manager — <%= device.name %> status</title>
-  </head>
-  <body>
-    <div class="container">
-      <%- include('../_navbar.ejs') %>
+<%- contentFor('title') %>
+Status of a device <%= device.name %>
 
-      <div class="row">
-        <div class="col col-xl-6">
-          <h1>Device Status</h1>
-          
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Property</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th>id</th>
-                <td><%= device.id %></td>
-              </tr>
+<%- contentFor('content') %>
+<div class="row">
+  <div class="col col-xl-6">
+    <h1>Device Status</h1>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>id</th>
+          <td><%= device.id %></td>
+        </tr>
 
-              <tr>
-                <th>name</th>
-                <td><%= device.name %></td>
-              </tr>
+        <tr>
+          <th>name</th>
+          <td><%= device.name %></td>
+        </tr>
 
-              <tr>
-                <th>Power on</th>
-                <td><%= device.powerOn %></td>
-              </tr>
+        <tr>
+          <th>Power on</th>
+          <td><%= device.powerOn %></td>
+        </tr>
 
-              <tr>
-                <th>status</th>
-                <td><%= device.status %></td>
-              </tr>
+        <tr>
+          <th>status</th>
+          <td><%= device.status %></td>
+        </tr>
 
-              <tr>
-                <th>description</th>
-                <td><%= device.description %></td>
-              </tr>
+        <tr>
+          <th>description</th>
+          <td><%= device.description %></td>
+        </tr>
 
-              <tr>
-                <th>temperature sensor value</th>
-                <td><%= device.temperatureSensorValue %></td>
-              </tr>
+        <tr>
+          <th>temperature sensor value</th>
+          <td><%= device.temperatureSensorValue %></td>
+        </tr>
 
-              <tr>
-                <th>temperature target value</th>
-                <td><%= device.temperatureTargetValue %></td>
-              </tr>
+        <tr>
+          <th>temperature target value</th>
+          <td><%= device.temperatureTargetValue %></td>
+        </tr>
 
-              <tr>
-                <th>volume</th>
-                <td><%= device.volume %></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+        <tr>
+          <th>volume</th>
+          <td><%= device.volume %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
-  <script language="javascript" src="/bootstrap/js/bootstrap.bundle.js"></script>
-</body>
-</html>
+</div>

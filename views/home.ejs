@@ -1,65 +1,49 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <title>Gader - Smart home manager — Home page</title>
-  </head>
-  <body>
-    <div class="container">
-      <%- include('_navbar.ejs') %>
+<%- contentFor('title') %>
+Home page
 
-      <div class="row">
-        <div class="col-3 p-5">
-          <img class="img-fluid" src="/images/logo.png" alt="Gader's logo">
+<%- contentFor('content') %>
+<div class="row">
+  <div class="col-3 p-5">
+    <img class="img-fluid" src="/images/logo.png" alt="Gader's logo">
+  </div>
+
+  <div class="col-9 p-5">
+    <p>
+      <strong>Gader</strong> is a smart home appliance manager designed to simplify device management within smart home infrastructure.
+      You are welcome to read more details about the project on the <a href="/about">About</a> page.
+    </p>
+    <p>
+      Here is a list of the most common actions that can be performed with this tool:
+    </p>
+
+    <div class="list-group">
+      <a href="/devices/new" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Add Device</h5>
         </div>
+        <p class="mb-1">Add a new device to your home system.</p>
+      </a>
 
-        <div class="col-9 p-5">
-          <p>
-            <strong>Gader</strong> is a smart home appliance manager designed to simplify device management within smart home infrastructure.
-            You are welcome to read more details about the project on the <a href="/about">About</a> page.
-          </p>
-          <p>
-            Here is a list of the most common actions that can be performed with this tool:
-          </p>
-
-          <div class="list-group">
-            <a href="/devices/new" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">Add Device</h5>
-              </div>
-              <p class="mb-1">Add a new device to your home system.</p>
-            </a>
-
-            <a href="/devices/status" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">Device Status</h5>
-              </div>
-              <p class="mb-1">Check the device status and properties.</p>
-            </a>
-
-            <a href="/devices/control" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">Control Device</h5>
-              </div>
-              <p class="mb-1">Update the device status and properties.</p>
-            </a>
-
-            <a href="/devices/delete" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">Delete Device</h5>
-              </div>
-              <p class="mb-1">Remove a device record from the system.</p>
-            </a>
-          </div>
+      <a href="/devices/status" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Device Status</h5>
         </div>
-      </div>
-      
+        <p class="mb-1">Check the device status and properties.</p>
+      </a>
+
+      <a href="/devices/control" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Control Device</h5>
+        </div>
+        <p class="mb-1">Update the device status and properties.</p>
+      </a>
+
+      <a href="/devices/delete" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Delete Device</h5>
+        </div>
+        <p class="mb-1">Remove a device record from the system.</p>
+      </a>
     </div>
-
-    <script language="javascript" src="/bootstrap/js/bootstrap.bundle.js"></script>
-  </body>
-</html>
+  </div>
+</div>

@@ -1,86 +1,72 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
-    <title>Gader - Smart home manager</title>
-  </head>
-  <body>
-    <div class="container">
-      <%- include('../_navbar.ejs') %>
+<%- contentFor('title') %>
+Add a new device
 
-      <div class="row mb-5">
-        <div class="col col-xl-6">
-          <h1 class="mb-4">Add a new device</h1>
+<%- contentFor('content') %>
+<div class="row mb-5">
+  <div class="col col-xl-6">
+    <h1 class="mb-4">Add a new device</h1>
 
-          <form action="/devices" method="post">
-            <div class="mb-3">
-              <label for="deviceNameInputField" class="form-label">Name</label>
-              <input type="text" name="name" id="deviceNameInputField" class="form-control" required>
-            </div>
-
-            <div class="mb-3">
-              <label for="deviceTypeSelector" class="form-label">Type</label>
-              <select name="type" id="deviceTypeSelector" class="form-select" required>
-                <option disabled selected value>Select a type</option>
-                <option value="ac">Air Conditioning</option>
-                <option value="heater">Heater</option>
-                <option value="curtain">Curtain</option>
-                <option value="lighting">Lighting</option>
-                <option value="tv">TV</option>
-                <option value="camera">Security Сamera</option>
-                <option value="door_chime">Door Chime</option>
-                <option value="thermometer_sensor">Thermometer</option>
-                <option value="motion_sensor">Motion Sensor</option>
-                <option value="door_open_sensor">Door Open Sensor</option>
-              </select>
-            </div>
-
-            <div class="mb-3">
-              <label for="deviceDescriptionInputField" class="form-label">Description</label>
-              <textarea rows="3" name="description" id="deviceDescriptionInputField" class="form-control"></textarea>
-            </div>
-
-            <div class="mb-3">
-              <input name="powerOn" class="form-check-input" type="checkbox" value="1" id="devicePowerOnField">
-              <label for="devicePowerOnField" class="form-label">Power On</label>
-            </div>
-
-            <div class="mb-3">
-              <label for="deviceStatusSelector" class="form-label">Status</label>
-              <select name="status" id="deviceStatusSelector" class="form-select">
-                <option disabled selected value>Select status</option>
-                <option value="ok">Ok</option>
-                <option value="alert">Alert</option>
-                <option value="opened">Opened</option>
-                <option value="closed">Closed</option>
-                <option value="error">Error</option>
-              </select>
-            </div>
-
-            <div class="mb-3">
-              <label for="deviceTemperatureSensorValueInputField" class="form-label">Temperature Sensor Value</label>
-              <input type="number" name="temperatureSensorValue" id="deviceTemperatureSensorValueInputField" class="form-control"></textarea>
-            </div>
-
-            <div class="mb-3">
-              <label for="deviceTemperatureTargetValueInputField" class="form-label">Temperature Target Value</label>
-              <input type="number" name="temperatureTargetValue" id="deviceTemperatureTargetValueInputField" class="form-control"></textarea>
-            </div>
-
-            <div class="mb-3">
-              <label for="deviceVolumeField" class="form-label">Volume</label>
-              <input type="number" name="volume" id="deviceVolumeField" class="form-control"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Create</button>
-          </form>
-        </div>
+    <form action="/devices" method="post">
+      <div class="mb-3">
+        <label for="deviceNameInputField" class="form-label">Name</label>
+        <input type="text" name="name" id="deviceNameInputField" class="form-control" required>
       </div>
-    </div>
 
-    <script language="javascript" src="/bootstrap/js/bootstrap.bundle.js"></script>
-  </body>
-</html>
+      <div class="mb-3">
+        <label for="deviceTypeSelector" class="form-label">Type</label>
+        <select name="type" id="deviceTypeSelector" class="form-select" required>
+          <option disabled selected value>Select a type</option>
+          <option value="ac">Air Conditioning</option>
+          <option value="heater">Heater</option>
+          <option value="curtain">Curtain</option>
+          <option value="lighting">Lighting</option>
+          <option value="tv">TV</option>
+          <option value="camera">Security Сamera</option>
+          <option value="door_chime">Door Chime</option>
+          <option value="thermometer_sensor">Thermometer</option>
+          <option value="motion_sensor">Motion Sensor</option>
+          <option value="door_open_sensor">Door Open Sensor</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="deviceDescriptionInputField" class="form-label">Description</label>
+        <textarea rows="3" name="description" id="deviceDescriptionInputField" class="form-control"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <input name="powerOn" class="form-check-input" type="checkbox" value="1" id="devicePowerOnField">
+        <label for="devicePowerOnField" class="form-label">Power On</label>
+      </div>
+
+      <div class="mb-3">
+        <label for="deviceStatusSelector" class="form-label">Status</label>
+        <select name="status" id="deviceStatusSelector" class="form-select">
+          <option disabled selected value>Select status</option>
+          <option value="ok">Ok</option>
+          <option value="alert">Alert</option>
+          <option value="opened">Opened</option>
+          <option value="closed">Closed</option>
+          <option value="error">Error</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="deviceTemperatureSensorValueInputField" class="form-label">Temperature Sensor Value</label>
+        <input type="number" name="temperatureSensorValue" id="deviceTemperatureSensorValueInputField" class="form-control"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="deviceTemperatureTargetValueInputField" class="form-label">Temperature Target Value</label>
+        <input type="number" name="temperatureTargetValue" id="deviceTemperatureTargetValueInputField" class="form-control"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="deviceVolumeField" class="form-label">Volume</label>
+        <input type="number" name="volume" id="deviceVolumeField" class="form-control"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+  </div>
+</div>

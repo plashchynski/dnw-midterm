@@ -1,29 +1,15 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/bootstrap/css/bootstrap.css' />
-    <title>Gader - Smart home manager</title>
-  </head>
-  <body>
-    <div class="container">
-      <%- include('../_navbar.ejs') %>
+<%- contentFor('title') %>
+Control devices
 
-      <div class="row">
-        <div class="col">
-          <h1>Control Device</h1>
-          <h2>Select a device to control:</h2>
-          <div class="list-group">
-            <% devices.forEach(function(device){ %>
-              <a class="list-group-item list-group-item-action" href="/devices/control/<%= device.id %>"><%= device.name %></a>
-            <% }); %>
-          </div>
-        </div>
-      </div>
+<%- contentFor('content') %>
+<div class="row">
+  <div class="col">
+    <h1>Control Device</h1>
+    <h2>Select a device to control:</h2>
+    <div class="list-group">
+      <% devices.forEach(function(device){ %>
+        <a class="list-group-item list-group-item-action" href="/devices/control/<%= device.id %>"><%= device.name %></a>
+      <% }); %>
     </div>
-
-    <script language="javascript" src="/bootstrap/js/bootstrap.bundle.js"></script>
-  </body>
-</html>
+  </div>
+</div>
