@@ -11,10 +11,6 @@ const expressLayouts = require('express-ejs-layouts');
 
 const PORT = 8089;
 
-const homeRouter = require('./routes/home');
-const aboutRouter = require('./routes/about');
-const devicesRouter = require('./routes/devices');
-
 const app = express();
 
 // view engine setup
@@ -37,9 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Add bootstrap dist files as a virtual subdirectory for static files
 app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist')));
 
-app.use('/', homeRouter);
-app.use('/about', aboutRouter);
-app.use('/devices', devicesRouter);
+require('./routes/main')(app);
 
 // catch 404 and forward to error handler
 app.use((_req, _res, next) => {
