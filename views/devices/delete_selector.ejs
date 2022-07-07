@@ -3,15 +3,24 @@ Delete devices
 
 <%- contentFor('content') %>
 <div class="row">
-  <div class="col">
+  <div class="col col-xl-6">
     <h1>Delete Device</h1>
     <h2>Select a device to delete:</h2>
     <div class="list-group">
       <% devices.forEach(function(device){ %>
-        <form action="/devices/delete/<%= device.id %>" method="post">
-          <button type="submit" class="list-group-item list-group-item-action"><%= device.name %></button>
-        </form>
+        <div class="list-group-item">
+          <div class="clearfix">
+            <div class="float-start">
+              <%= device.name %>
+            </div>
+            <form action="/devices/delete/<%= device.id %>" method="post" class="deleteDeviceForm float-end">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </div>
+        </div>
       <% }); %>
     </div>
   </div>
 </div>
+
+<script language="javascript" src="/javascripts/confirm_device_deletion.js"></script>
