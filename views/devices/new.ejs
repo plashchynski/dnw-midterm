@@ -6,10 +6,13 @@ Add a new device
   <div class="col col-xl-6">
     <h1 class="mb-4">Add a new device</h1>
 
-    <form action="/devices" method="post">
+    <form action="/devices" class="needs-validation" method="post" novalidate>
       <div class="mb-3">
         <label for="deviceNameInputField" class="form-label">Name</label>
         <input type="text" name="name" id="deviceNameInputField" class="form-control" required>
+        <div class="invalid-feedback">
+          Name is required.
+        </div>
       </div>
 
       <div class="mb-3">
@@ -27,6 +30,9 @@ Add a new device
           <option value="motion_sensor">Motion Sensor</option>
           <option value="door_open_sensor">Door Open Sensor</option>
         </select>
+        <div class="invalid-feedback">
+          Type is required.
+        </div>
       </div>
 
       <div class="mb-3">
@@ -41,9 +47,8 @@ Add a new device
 
       <div class="mb-3">
         <label for="deviceStatusSelector" class="form-label">Status</label>
-        <select name="status" id="deviceStatusSelector" class="form-select">
-          <option disabled selected value>Select status</option>
-          <option value="ok">Ok</option>
+        <select name="status" id="deviceStatusSelector" class="form-select" required>
+          <option value="ok" selected>Ok</option>
           <option value="alert">Alert</option>
           <option value="opened">Opened</option>
           <option value="closed">Closed</option>
@@ -70,3 +75,5 @@ Add a new device
     </form>
   </div>
 </div>
+
+<script language="javascript" src="/javascripts/form_validation.js"></script>
