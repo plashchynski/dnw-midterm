@@ -62,17 +62,26 @@ Control device <%= device.name %>
 
       <div class="mb-3">
         <label for="deviceTemperatureSensorValueInputField" class="form-label">Temperature Sensor Value, &#8451;</label>
-        <input type="number" value="<%= device.temperatureSensorValue %>" name="temperatureSensorValue" id="deviceTemperatureSensorValueInputField" class="form-control" min="-20" max="50"></textarea>
+        <input type="number" value="<%= device.temperatureSensorValue %>" name="temperatureSensorValue" id="deviceTemperatureSensorValueInputField" class="form-control" min="-20" max="50">
+        <div class="invalid-feedback">
+          Should be a number in a range -20-50.
+        </div>
       </div>
 
       <div class="mb-3">
         <label for="deviceTemperatureTargetValueInputField" class="form-label">Temperature Target Value, &#8451;</label>
-        <input type="number" value="<%= device.temperatureTargetValue %>" name="temperatureTargetValue" id="deviceTemperatureTargetValueInputField" class="form-control" min="15" max="35"></textarea>
+        <input type="number" value="<%= device.temperatureTargetValue %>" name="temperatureTargetValue" id="deviceTemperatureTargetValueInputField" class="form-control" min="15" max="35">
+        <div class="invalid-feedback">
+          Should be a number in a range 15-35.
+        </div>
       </div>
 
       <div class="mb-3">
-        <label for="deviceVolumeInputField" class="form-label">Volume</label>
-        <input type="number" value="<%= device.volume %>" name="volume" id="deviceVolumeInputField" class="form-control"></textarea>
+        <label for="deviceVolumeInputField" class="form-label">Volume, %</label>
+        <input type="number" value="<%= device.volume %>" name="volume" id="deviceVolumeInputField" class="form-control" min="0" max="100">
+        <div class="invalid-feedback">
+          Should be a number in a range 0-100
+        </div>
       </div>
 
       <button type="submit" class="btn btn-primary">Update</button>
