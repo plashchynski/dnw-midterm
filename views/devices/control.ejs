@@ -6,10 +6,13 @@ Control device <%= device.name %>
   <div class="col col-xl-6">
     <h1 class="mb-4">Control device</h1>
 
-    <form action="/devices/control/<%= device.id %>" method="post">
+    <form action="/devices/control/<%= device.id %>" class="needs-validation" method="post" novalidate>
       <div class="mb-3">
         <label for="deviceNameInputField" class="form-label">Name</label>
         <input type="text" name="name" value="<%= device.name %>" id="deviceNameInputField" class="form-control" required>
+        <div class="invalid-feedback">
+          Name is required.
+        </div>
       </div>
 
       <div class="mb-3">
@@ -27,6 +30,9 @@ Control device <%= device.name %>
           <option <%= (device.type == 'motion_sensor') ? 'selected' : '' %> value="motion_sensor">Motion Sensor</option>
           <option <%= (device.type == 'door_open_sensor') ? 'selected' : '' %> value="door_open_sensor">Door Open Sensor</option>
         </select>
+        <div class="invalid-feedback">
+          Type is required.
+        </div>
       </div>
 
       <div class="mb-3">
@@ -43,12 +49,15 @@ Control device <%= device.name %>
         <label for="deviceStatusSelector" class="form-label">Status</label>
         <select name="status" id="deviceStatusSelector" class="form-select" required>
           <option disabled value>Select status</option>
-          <option <%= (device.status == 'ok') ? 'selected' : '' %> value="on">Ok</option>
+          <option <%= (device.status == 'ok') ? 'selected' : '' %> value="ok">Ok</option>
           <option <%= (device.status == 'alert') ? 'selected' : '' %> value="alert">Alert</option>
           <option <%= (device.status == 'opened') ? 'selected' : '' %> value="opened">Opened</option>
           <option <%= (device.status == 'closed') ? 'selected' : '' %> value="closed">Closed</option>
           <option <%= (device.status == 'error') ? 'selected' : '' %> value="error">Error</option>
         </select>
+        <div class="invalid-feedback">
+          Status is required.
+        </div>
       </div>
 
       <div class="mb-3">
@@ -70,3 +79,5 @@ Control device <%= device.name %>
     </form>
   </div>
 </div>
+
+<script language="javascript" src="/javascripts/form_validation.js"></script>
