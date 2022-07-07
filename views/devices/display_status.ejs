@@ -25,8 +25,19 @@ Status of a device <%= device.name %>
         </tr>
 
         <tr>
-          <th>Power on</th>
-          <td><%= device.powerOn %></td>
+          <th>Type</th>
+          <td><%= device.type %></td>
+        </tr>
+
+        <tr>
+          <th>Power</th>
+          <td>
+            <% if (device.powerOn == 1) { %>
+              <span class="badge rounded-pill bg-success">On</span>
+            <% } else { %>
+              <span class="badge rounded-pill bg-secondary">Off</span>
+            <% } %>
+          </td>
         </tr>
 
         <tr>
@@ -39,20 +50,26 @@ Status of a device <%= device.name %>
           <td><%= device.description %></td>
         </tr>
 
-        <tr>
-          <th>temperature sensor value</th>
-          <td><%= device.temperatureSensorValue %></td>
-        </tr>
+        <% if (device.type === 'ac' || device.type === 'heater' || device.type === 'thermometer_sensor') { %>
+          <tr>
+            <th>temperature sensor value</th>
+            <td><%= device.temperatureSensorValue %></td>
+          </tr>
+        <% } %>
 
-        <tr>
-          <th>temperature target value</th>
-          <td><%= device.temperatureTargetValue %></td>
-        </tr>
+        <% if (device.type === 'ac' || device.type === 'heater') { %>
+          <tr>
+            <th>temperature target value</th>
+            <td><%= device.temperatureTargetValue %></td>
+          </tr>
+        <% } %>
 
-        <tr>
-          <th>volume</th>
-          <td><%= device.volume %></td>
-        </tr>
+        <% if (device.type === 'tv' || device.type === 'door_chime') { %>
+          <tr>
+            <th>volume</th>
+            <td><%= device.volume %></td>
+          </tr>
+        <% } %>
       </tbody>
     </table>
   </div>
