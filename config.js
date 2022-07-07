@@ -8,6 +8,7 @@ const config = {
     connectionLimit: 2,
     queueLimit: 0,
   },
+  sessionSecret: 'IgENGunEtiMetERonFEcHeFast',
 };
 
 module.exports = config;

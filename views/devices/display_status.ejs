@@ -2,6 +2,17 @@
 Status of a device <%= device.name %>
 
 <%- contentFor('content') %>
+
+<% if (successMessage.length > 0) { %>
+<div class="alert alert-success alert-dismissible d-flex align-items-center fade show" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="/bootstrap-icons/bootstrap-icons.svg#check-circle-fill"/></svg>
+  <div>
+    <%= successMessage %>
+  </div>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<% } %>
+
 <div class="row">
   <div class="col col-xl-6">
     <h1>Device Status</h1>

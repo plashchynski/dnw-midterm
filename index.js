@@ -3,15 +3,29 @@
 const http = require('http');
 const createError = require('http-errors');
 const express = require('express');
+const session = require('express-session');
+const flash = require('connect-flash');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
+const config = require('./config');
 
 const PORT = 8089;
 
 const app = express();
+
+// Setup express-session module to store sessions
+app.use(session({
+  secret: config.sessionSecret,
+  saveUninitialized: true,
+  resave: true,
+}));
+
+// Setup connect-flash module to store flash messages
+// https://www.geeksforgeeks.org/how-to-display-flash-messages-using-connect-flash-module-in-node-js/
+app.use(flash());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Add bootstrap dist files as a virtual subdirectory for static files
 app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist')));
+app.use('/bootstrap-icons', express.static(path.join(__dirname, '/node_modules/bootstrap-icons')));
 
 require('./routes/main')(app);
 

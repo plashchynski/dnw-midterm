@@ -10,7 +10,7 @@ router.get('/status', async (req, res, next) => {
 
 router.get('/status/:deviceId', async (req, res, next) => {
   const data = await db.query('SELECT * FROM devices WHERE id = ?;', [req.params.deviceId]);
-  res.render('devices/display_status', { device: data[0] });
+  res.render('devices/display_status', { device: data[0], successMessage: req.flash('successMessage') });
 });
 
 router.get('/new', (req, res, next) => {
@@ -40,9 +40,11 @@ router.post('/', async (req, res, next) => {
     volume
   ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
-  await db.query(sql, values);
+  const result = await db.query(sql, values);
+  const newDeviceId = result.insertId;
 
-  res.redirect('/devices/new');
+  req.flash('successMessage', 'A new device was successfully added');
+  res.redirect(`/devices/status/${newDeviceId}`);
 });
 
 router.get('/control', async (req, res, next) => {
