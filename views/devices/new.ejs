@@ -59,7 +59,7 @@ Add a new device
         </div>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-3" id="temperatureSensorOptions">
         <label for="deviceTemperatureSensorValueInputField" class="form-label">Temperature Sensor Value, &#8451;</label>
         <input type="number" name="temperatureSensorValue" id="deviceTemperatureSensorValueInputField" class="form-control" min="-20" max="50">
         <div class="invalid-feedback">
@@ -67,7 +67,7 @@ Add a new device
         </div>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-3" id="temperatureTargetOptions">
         <label for="deviceTemperatureTargetValueInputField" class="form-label">Temperature Target Value, &#8451;</label>
         <input type="number" name="temperatureTargetValue" id="deviceTemperatureTargetValueInputField" class="form-control" min="15" max="35">
         <div class="invalid-feedback">
@@ -75,7 +75,7 @@ Add a new device
         </div>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-3" id="volumeOptions">
         <label for="deviceVolumeField" class="form-label">Volume, %</label>
         <input type="number" name="volume" id="deviceVolumeField" class="form-control" min="0" max="100">
         <div class="invalid-feedback">
@@ -89,3 +89,4 @@ Add a new device
 </div>
 
 <script language="javascript" src="/javascripts/form_validation.js"></script>
+<script language="javascript" src="/javascripts/device_type_fields_selector.js"></script>

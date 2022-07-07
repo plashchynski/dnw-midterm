@@ -16,26 +16,6 @@ Control device <%= device.name %>
       </div>
 
       <div class="mb-3">
-        <label for="deviceTypeSelector" class="form-label">Type</label>
-        <select name="type" id="deviceTypeSelector" class="form-select" required>
-          <option disabled selected value>Select a type</option>
-          <option <%= (device.type == 'ac') ? 'selected' : '' %> value="ac">Air Conditioning</option>
-          <option <%= (device.type == 'heater') ? 'selected' : '' %> value="heater">Heater</option>
-          <option <%= (device.type == 'curtain') ? 'selected' : '' %> value="curtain">Curtain</option>
-          <option <%= (device.type == 'lighting') ? 'selected' : '' %> value="lighting">Lighting</option>
-          <option <%= (device.type == 'tv') ? 'selected' : '' %> value="tv">TV</option>
-          <option <%= (device.type == 'camera') ? 'selected' : '' %> value="camera">Security Сamera</option>
-          <option <%= (device.type == 'door_chime') ? 'selected' : '' %> value="door_chime">Door Chime</option>
-          <option <%= (device.type == 'thermometer_sensor') ? 'selected' : '' %> value="thermometer_sensor">Thermometer</option>
-          <option <%= (device.type == 'motion_sensor') ? 'selected' : '' %> value="motion_sensor">Motion Sensor</option>
-          <option <%= (device.type == 'door_open_sensor') ? 'selected' : '' %> value="door_open_sensor">Door Open Sensor</option>
-        </select>
-        <div class="invalid-feedback">
-          Type is required.
-        </div>
-      </div>
-
-      <div class="mb-3">
         <label for="deviceDescriptionInputField" class="form-label">Description</label>
         <textarea rows="3" name="description" value="<%= device.description %>" id="deviceDescriptionInputField" class="form-control"></textarea>
       </div>
@@ -49,40 +29,46 @@ Control device <%= device.name %>
         <label for="deviceStatusSelector" class="form-label">Status</label>
         <select name="status" id="deviceStatusSelector" class="form-select" required>
           <option disabled value>Select status</option>
-          <option <%= (device.status == 'ok') ? 'selected' : '' %> value="ok">Ok</option>
-          <option <%= (device.status == 'alert') ? 'selected' : '' %> value="alert">Alert</option>
-          <option <%= (device.status == 'opened') ? 'selected' : '' %> value="opened">Opened</option>
-          <option <%= (device.status == 'closed') ? 'selected' : '' %> value="closed">Closed</option>
-          <option <%= (device.status == 'error') ? 'selected' : '' %> value="error">Error</option>
+          <option <%= (device.status === 'ok') ? 'selected' : '' %> value="ok">Ok</option>
+          <option <%= (device.status === 'alert') ? 'selected' : '' %> value="alert">Alert</option>
+          <option <%= (device.status === 'opened') ? 'selected' : '' %> value="opened">Opened</option>
+          <option <%= (device.status === 'closed') ? 'selected' : '' %> value="closed">Closed</option>
+          <option <%= (device.status === 'error') ? 'selected' : '' %> value="error">Error</option>
         </select>
         <div class="invalid-feedback">
           Status is required.
         </div>
       </div>
 
-      <div class="mb-3">
-        <label for="deviceTemperatureSensorValueInputField" class="form-label">Temperature Sensor Value, &#8451;</label>
-        <input type="number" value="<%= device.temperatureSensorValue %>" name="temperatureSensorValue" id="deviceTemperatureSensorValueInputField" class="form-control" min="-20" max="50">
-        <div class="invalid-feedback">
-          Should be a number in a range -20-50.
+      <% if (device.type === 'ac' || device.type === 'heater' || device.type === 'thermometer_sensor') { %>
+        <div class="mb-3">
+          <label for="deviceTemperatureSensorValueInputField" class="form-label">Temperature Sensor Value, &#8451;</label>
+          <input type="number" value="<%= device.temperatureSensorValue %>" name="temperatureSensorValue" id="deviceTemperatureSensorValueInputField" class="form-control" min="-20" max="50">
+          <div class="invalid-feedback">
+            Should be a number in a range -20-50.
+          </div>
         </div>
-      </div>
+      <% } %>
 
-      <div class="mb-3">
-        <label for="deviceTemperatureTargetValueInputField" class="form-label">Temperature Target Value, &#8451;</label>
-        <input type="number" value="<%= device.temperatureTargetValue %>" name="temperatureTargetValue" id="deviceTemperatureTargetValueInputField" class="form-control" min="15" max="35">
-        <div class="invalid-feedback">
-          Should be a number in a range 15-35.
+      <% if (device.type === 'ac' || device.type === 'heater') { %>
+        <div class="mb-3">
+          <label for="deviceTemperatureTargetValueInputField" class="form-label">Temperature Target Value, &#8451;</label>
+          <input type="number" value="<%= device.temperatureTargetValue %>" name="temperatureTargetValue" id="deviceTemperatureTargetValueInputField" class="form-control" min="15" max="35">
+          <div class="invalid-feedback">
+            Should be a number in a range 15-35.
+          </div>
         </div>
-      </div>
+      <% } %>
 
-      <div class="mb-3">
-        <label for="deviceVolumeInputField" class="form-label">Volume, %</label>
-        <input type="number" value="<%= device.volume %>" name="volume" id="deviceVolumeInputField" class="form-control" min="0" max="100">
-        <div class="invalid-feedback">
-          Should be a number in a range 0-100
+      <% if (device.type === 'tv' || device.type === 'door_chime') { %>
+        <div class="mb-3">
+          <label for="deviceVolumeInputField" class="form-label">Volume, %</label>
+          <input type="number" value="<%= device.volume %>" name="volume" id="deviceVolumeInputField" class="form-control" min="0" max="100">
+          <div class="invalid-feedback">
+            Should be a number in a range 0-100
+          </div>
         </div>
-      </div>
+      <% } %>
 
       <button type="submit" class="btn btn-primary">Update</button>
     </form>
