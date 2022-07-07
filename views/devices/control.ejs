@@ -9,7 +9,7 @@ Control device <%= device.name %>
     <form action="/devices/control/<%= device.id %>" class="needs-validation" method="post" novalidate>
       <div class="mb-3">
         <label for="deviceNameInputField" class="form-label">Name</label>
-        <input type="text" name="name" value="<%= device.name %>" id="deviceNameInputField" class="form-control" required>
+        <input type="text" name="name" value="<%= device.name %>" id="deviceNameInputField" class="form-control" required maxlength="50">
         <div class="invalid-feedback">
           Name is required.
         </div>
@@ -61,13 +61,13 @@ Control device <%= device.name %>
       </div>
 
       <div class="mb-3">
-        <label for="deviceTemperatureSensorValueInputField" class="form-label">Temperature Sensor Value</label>
-        <input type="number" value="<%= device.temperatureSensorValue %>" name="temperatureSensorValue" id="deviceTemperatureSensorValueInputField" class="form-control"></textarea>
+        <label for="deviceTemperatureSensorValueInputField" class="form-label">Temperature Sensor Value, &#8451;</label>
+        <input type="number" value="<%= device.temperatureSensorValue %>" name="temperatureSensorValue" id="deviceTemperatureSensorValueInputField" class="form-control" min="-20" max="50"></textarea>
       </div>
 
       <div class="mb-3">
-        <label for="deviceTemperatureTargetValueInputField" class="form-label">Temperature Target Value</label>
-        <input type="number" value="<%= device.temperatureTargetValue %>" name="temperatureTargetValue" id="deviceTemperatureTargetValueInputField" class="form-control"></textarea>
+        <label for="deviceTemperatureTargetValueInputField" class="form-label">Temperature Target Value, &#8451;</label>
+        <input type="number" value="<%= device.temperatureTargetValue %>" name="temperatureTargetValue" id="deviceTemperatureTargetValueInputField" class="form-control" min="15" max="35"></textarea>
       </div>
 
       <div class="mb-3">
