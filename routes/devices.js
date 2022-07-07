@@ -83,16 +83,19 @@ router.post('/control/:deviceId', async (req, res, next) => {
 
   await db.query(sql, values);
 
+  req.flash('successMessage', 'A device was successfully updated');
+
   res.redirect(`/devices/status/${req.params.deviceId}`);
 });
 
 router.get('/delete', async (req, res, next) => {
   const data = await db.query('SELECT * FROM devices;');
-  res.render('devices/delete_selector', { devices: data });
+  res.render('devices/delete_selector', { devices: data, successMessage: req.flash('successMessage') });
 });
 
 router.post('/delete/:deviceId', async (req, res, next) => {
   await db.query('DELETE FROM devices WHERE id = ?;', [req.params.deviceId]);
+  req.flash('successMessage', 'A device was successfully deleted');
   res.redirect('/devices/delete');
 });
 

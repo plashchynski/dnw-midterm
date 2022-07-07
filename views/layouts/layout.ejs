@@ -12,6 +12,16 @@
     <div class="container">
       <%- include('_navbar.ejs') %>
 
+      <% if (typeof successMessage !== 'undefined' && successMessage.length > 0) { %>
+        <div class="alert alert-success alert-dismissible d-flex align-items-center fade show" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="/bootstrap-icons/bootstrap-icons.svg#check-circle-fill"/></svg>
+          <div>
+            <%= successMessage %>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% } %>
+
       <%- content %>
 
     <script language="javascript" src="/bootstrap/js/bootstrap.bundle.js"></script>
