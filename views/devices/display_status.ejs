@@ -50,6 +50,7 @@ Status of a device <%= device.name %>
           <td><%= device.description %></td>
         </tr>
 
+        <% // show only relevant fields for a specific device type %>
         <% if (device.type === 'ac' || device.type === 'heater' || device.type === 'thermometer_sensor') { %>
           <tr>
             <th>temperature sensor value</th>
