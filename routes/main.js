@@ -39,7 +39,7 @@ module.exports = (app) => {
   // outputs: html generated using templates in devices/
   app.use('/devices', devicesRouter);
 
-  // purpose: send events to the client side for hot reloading (hot_reloading.js)
+  // purpose: implements the server-sent events for hot reloading (hot_reloading.js)
   // inputs: no
   // outputs: events once a device created, updated, or deleted.
   app.use('/events', eventsRouter);

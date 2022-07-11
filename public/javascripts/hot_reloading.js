@@ -1,4 +1,4 @@
-// This files implement notifications from the server-side to the client-side
+// This files implement the server-sent events
 
 (() => {
   const evtSource = new EventSource('/events');

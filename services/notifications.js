@@ -1,4 +1,4 @@
-// This file implements notifications from the server-side to the client-side
+// This file implements the server-sent events for hot reloading (hot_reloading.js)
 
 // list of subscribed clients
 if (!global.listeners) {
