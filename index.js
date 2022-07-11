@@ -31,7 +31,7 @@ app.use(flash());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// set layout
+// setup the layout
 app.use(expressLayouts);
 app.set('layout', 'layouts/layout');
 
