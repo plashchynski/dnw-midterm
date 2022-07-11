@@ -1,3 +1,5 @@
+// This files implement notifications from the server-side to the client-side
+
 (() => {
   const evtSource = new EventSource('/events');
   evtSource.onmessage = (event) => {
