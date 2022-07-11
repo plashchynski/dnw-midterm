@@ -5,6 +5,10 @@ const notifications = require('../services/notifications');
 
 const router = express.Router();
 
+// purpose: update a device
+// inputs: name, description, powerOn, status, temperatureSensorValue,
+//    temperatureTargetValue, volume, deviceId
+// outputs: redirects to /devices/status/${newDeviceId} with a success message
 router.post(
   '/control/:deviceId',
 
@@ -33,6 +37,7 @@ router.post(
 
     const powerOn = (req.body.powerOn === '1') ? 1 : 0;
 
+    // set all undefined to NULL as mysql2 requires
     const values = [name, description, powerOn, status, temperatureSensorValue,
       temperatureTargetValue, volume, deviceId].map((v) => ((v === undefined) ? null : v));
 
@@ -49,8 +54,10 @@ router.post(
 
     await db.query(sql, values);
 
+    // notify clients about changes
     notifications.broadcast({ updated: deviceId });
 
+    // This is a success feedback message
     req.flash('successMessage', 'A device was successfully updated');
     res.redirect(`/devices/status/${deviceId}`);
   },

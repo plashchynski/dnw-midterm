@@ -5,6 +5,10 @@ const notifications = require('../services/notifications');
 
 const router = express.Router();
 
+// purpose: create a new device
+// inputs: name, type, description, powerOn, status, temperatureSensorValue,
+//    temperatureTargetValue, volume
+// outputs: redirects to /devices/status/${newDeviceId} with a success message
 router.post(
   '/',
 
@@ -33,6 +37,7 @@ router.post(
 
     const powerOn = (req.body.powerOn === '1') ? 1 : 0;
 
+    // set all undefined to NULL as mysql2 requires
     const values = [name, type, description, powerOn, status, temperatureSensorValue,
       temperatureTargetValue, volume].map((v) => ((v === undefined) ? null : v));
 
@@ -51,8 +56,10 @@ router.post(
     const result = await db.query(sql, values);
     const newDeviceId = result.insertId;
 
+    // notify clients about changes
     notifications.broadcast({ created: newDeviceId });
 
+    // This is a success feedback message
     req.flash('successMessage', 'A new device was successfully added');
     res.redirect(`/devices/status/${newDeviceId}`);
   },
